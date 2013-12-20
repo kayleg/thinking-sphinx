@@ -72,7 +72,7 @@ module ThinkingSphinx
 
       def document_id
         quoted_alias = quote_column source.primary_key
-        "#{quoted_primary_key} * #{config.indices.count} + #{source.offset} AS #{quoted_alias}"
+        "(#{quoted_primary_key})::bigint * #{config.indices.count} + #{source.offset} AS #{quoted_alias}"
       end
 
       def reversed_document_id
